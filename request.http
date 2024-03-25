@@ -1,0 +1,28 @@
+
+### listing resource
+GET http://localhost:3000/employees
+
+### getting resource
+GET http://localhost:3000/employees/1
+
+### creating resource
+POST http://localhost:3000/employees
+Content-Type: 'application/json'
+
+{
+    "name": "Joko",
+    "departement": "finance",
+    "salary": 5000000,
+    "is_manager": false
+}
+
+### updating resource
+PUT http://localhost:3000/employees/1
+Content-Type: 'application/json'
+
+{
+    
+}
+
+### deleting resource
+DELETE http://localhost:3000/employees/1

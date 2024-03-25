@@ -1,0 +1,17 @@
+{
+  "name": "latihan",
+  "version": "1.0.0",
+  "description": "endpoint yang harus dibuat: 1. Listing all resources 2. Getting a resource 3. Creating a resource 4. Updating a resource 5. Deleting a resource ### Note: pakailah framework express dan package pg untuk koneksi ke database",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon app.js",
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "pg": "^8.11.3"
+  }
+}
