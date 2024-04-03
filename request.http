@@ -1,28 +1,32 @@
-
 ### listing resource
-GET http://localhost:3000/employees
+GET http://localhost:3000/v1/employees
 
 ### getting resource
-GET http://localhost:3000/employees/1
+GET http://localhost:3000/v1/employees/1
 
 ### creating resource
-POST http://localhost:3000/employees
-Content-Type: 'application/json'
+POST http://localhost:3000/v1/employees
+Content-Type: application/json
 
 {
-    "name": "Joko",
-    "departement": "finance",
-    "salary": 5000000,
+    "name": "Bambang",
+    "departement": "hrd",
+    "salary": 10000000,
     "is_manager": false
 }
 
 ### updating resource
-PUT http://localhost:3000/employees/1
+PUT http://localhost:3000/v1/employees/2
 Content-Type: 'application/json'
 
 {
-    
+    "name": "Bambang",
+    "departement": "HRD",
+    "salary": 10000000,
+    "is_manager": true
 }
 
 ### deleting resource
-DELETE http://localhost:3000/employees/1
+DELETE http://localhost:3000/v1/employees/3
+
+

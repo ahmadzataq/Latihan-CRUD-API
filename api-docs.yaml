@@ -1,0 +1,155 @@
+openapi: 3.0.1
+info:
+  title: Employees API
+  description: API untuk Employee
+  version: 1.0.0
+  contact:
+    email: zahidtaqiyuddinahmad@gmail.com
+servers:
+  - url: http://localhost:3000/v1
+paths:
+  /employees:
+    post:
+      summary: add new employee
+      description: mendaftarkan employee baru
+      requestBody:
+        $ref: "#/components/requestBodies/AddEmployee"
+      responses:
+        201:
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Employee"
+        400:
+          description: missing or invalid information.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: name, departement, salary, and is_manager are required.
+    get:
+      summary: get all employees
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: OK
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Employee"
+  /employees/{employee_id}:
+    parameters:
+      - schema:
+          type: integer
+        name: employee_id
+        in: path
+        required: true
+    get:
+      summary: get detail employee
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: OK
+                  data:
+                    $ref: "#/components/schemas/Employee"
+    put:
+      summary: update employee details
+      requestBody:
+        $ref: "#/components/requestBodies/UpdateEmployee"
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Employee"
+    delete:
+      summary: delete an employee
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: OK
+components:
+  requestBodies:
+    AddEmployee:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/NewEmployee"
+    UpdateEmployee:
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: "#/components/schemas/NewEmployee"
+  schemas:
+    Employee:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 12
+        name:
+          type: string
+          example: Joko
+        department:
+          type: string
+          example: finance
+        salary:
+          type: number
+          example: 5000000
+        is_manager:
+          type: boolean
+          example: false
+    NewEmployee:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Joko
+        department:
+          type: string
+          example: finance
+        salary:
+          type: number
+          example: 5000000
+        is_manager:
+          type: boolean
+          example: false
